@@ -1,0 +1,230 @@
+---
+layout: presentation
+title: Ethereum Training - Ethereum Virtual Machine
+---
+
+<section>
+    <h1>Ethereum Training</h1>
+    <h3>Ethereum Virtual Machine</h3>
+    <p>
+    <small>Ethereum POC5 (well, almost...)</small>
+    </p>
+    <p>
+    <img width="128" height="128" src="images/ethereum-icon.png">
+    <a href="http://ethercasts.com">ethercasts</a>
+    </p>
+</section>
+
+<section>
+<h2>Ethereum Yellowpaper</h2>
+<a href="http://gavwood.com/paper.pdf"><img src="images/yellowpaper.png" alt="Yellowpaper"></a>
+</section>
+
+<section>
+<ul>
+    <li>Stack based architecture (256bit word size)
+    <li>Transaction-based state machine
+    <li>Low level bytecode language “EVM code”
+    <li>Pay fee per step (no infinite loops)
+    <li>Code is immutable
+</ul>
+</section>
+
+<section>
+<h2>Transaction-based state machine</h2>
+<img src="images/transaction-based-state-machine.png" alt="Transaction-based state machine">
+</section>
+
+<section data-background="black">
+<h2>Ethereum Accounts</h2>
+</section>
+
+<section>
+<ul>
+    <li><strong>accounts</strong> are identified by 20 byte-address i.e.
+        <code>0xd32fd7ecf43d1c2c0c553f1f515a8b5973456ec2</code>
+    <li>have <strong>ether balance</strong>
+    <li><em>either</em> externally owned (user accounts)
+    <ul>
+        <li>private key known to owner
+    </ul>
+    <li><em>or</em> <strong>contract</strong> with:
+    <ul>
+        <li>contract code
+        <li>storage (empty by default)
+        <li>no private key
+    </ul>
+</ul>
+</section>
+
+<section>
+<h2>Denominations</h2>
+<table>
+    <tr><td>1<td>Wei
+    <tr><td>10^12<td>Szabo
+    <tr><td>10^15<td>Finney
+    <tr><td>10^18<td>Ether
+</table>
+</section>
+
+<section data-background="black">
+<h2>Messages / Transactions</h2>
+</section>
+
+<section>
+<ul>
+    <li><strong>transactions</strong> have <strong>value</strong>: amount in ether
+    <li><strong>recipient</strong>: address (externally owner or contract), or none to create contract
+    <li><strong>data</strong> arguments
+    <li>cost of execution <strong>gas</strong>/<strong>gasprice</strong>
+    <li>contracts can <strong>return</strong> a <strong>value</strong> (functions)
+</ul>
+</section>
+
+<section data-background="black">
+<h2>Fees</h2>
+</section>
+
+<section>
+<ul>
+    <li><strong>gas</strong> used to pay for execution of contracts
+    <ul>
+        <li><code>gaslimit</code> - maximum amount of gas to pay
+        <li><code>gasprice</code> - fee to pay to miner per step
+    </ul>
+    <li>when contract runs out-of-gas (OOG): state changes reverted (except for balance &amp; fees)
+</ul>
+</section>
+
+<section>
+<h2>Fee schedule</h2>
+TODO table
+1	Default amount of gas to pay for execution cycle.
+0	STOP or SUICIDE
+20	SHA3, SLOAD, BALANCE, CALL
+100	SSTORE (sometimes double or waived)
+1	Every additional word when expanding memory
+5	Every byte of data or code for a transaction
+500	Every transaction
+</section>
+
+<section data-background="black">
+<h2>Code execution</h2>
+</section>
+
+<section>
+<ul>
+    <li><strong>init/code</strong> block: init executed upon creation, returns body with code to be persisted
+    <li><strong>Stack</strong> - each item 256 bit, LIFO, push/pop
+    <li><strong>Memory</strong> - word based indexing, unlimited byte array (limited by fees), reset at end of computation
+    <li><strong>Storage</strong> - persisted key/value store
+</ul>
+</section>
+
+<section data-background="black">
+<h2>Operations</h2>
+</section>
+
+<section>
+<h2>Arithmetic Operations</h2>
+TODO table
+ADD	Addition operation
+MUL	Multiplication operation
+SUB	Subtraction operation
+DIV	Integer division operation
+SDIV	Signed integer division operation
+MOD	Modulo remainder operation
+SMOD	Signed modulo remainder operation
+EXP	Expontential operation
+NEG	Negation operation
+</section>
+
+<section>
+<h2>Relation Operations</h2>
+TODO table
+LT	Less-than comparison
+GT	Greater-than comparison
+EQ	Equality comparison
+NOT	Simple not operator
+</section>
+
+<section>
+<h2>Bitwise Logic Operations</h2>
+TODO table
+AND	Bitwise AND operation
+OR	Bitwise OR operation
+XOR	Bitwise XOR operation
+BYTE	Retrieve single byte from word
+</section>
+
+<section>
+<h2>Crypto Operations</h2>
+TODO table
+SHA3	Compute SHA3-256 hash
+</section>
+
+<section>
+<h2>Environmental Information</h2>
+TODO table
+ADDRESS	Get address of currently executing account
+BALANCE	Get balance of currently executing account
+ORIGIN	Get execution origination address
+CALLER	Get caller address
+CALLVALUE	Get deposited value by the instruction/transaction responsible for this execution
+CALLDATALOAD	Get input data of current environment
+CALLDATASIZE	Get size of input data in current environment
+GASPRICE	Get price of gas in current environment
+</section>
+
+<section>
+<h2>Block Information</h2>
+TODO table
+PREVHASH	Get hash of most recent complete block
+COINBASE	Get the block’s coinbase address
+TIMESTAMP	Get the block’s timestamp
+NUMBER	Get the block’s number
+DIFFICULTY	Get the block’s difficulty
+GASLIMIT	Get the block’s gas limit
+</section>
+
+<section>
+<h2>Stack, Memory and Storage Operations</h2>
+TODO table
+PUSH1..32	Place n-byte item on stack
+POP	Remote item from stack
+DUP	Duplicate stack item
+SWAP	Exchange stack items
+MLOAD	Load word from memory
+MSTORE	Save word to memory
+MSTORE8	Save byte to memory
+SLOAD	Load word from storage
+SSTORE	Save word to storage
+</section>
+
+<section>
+<h2>Flow Operations</h2>
+TODO table
+STOP	Halts execution
+JUMP	Alter the program counter
+JUMPI	Conditionally alter the program counter
+PC	Get the program counter
+MSIZE	Get the size of the active memory
+GAS	Get the amount of available gas
+</section>
+
+<section>
+<h2>System Operations</h2>
+TODO table
+CREATE	Create a new contract
+CALL	Message-call into contract
+RETURN	Halt execution returning output data
+SUICIDE	Halt execution and obliterate account
+</section>
+
+<section>
+    <h1>What's next?</h1>
+    <h3>⇒ Learn Serpent</h3>
+    <p>
+        Questions / Feedback: <a href="mailto:jorisbontje@gmail.com">jorisbontje@gmail.com</a>
+    </p>
+</section>
