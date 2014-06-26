@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/*!
+ * EtherCasts Stylesheet
+ */
+
+
+/** Prevents layering issues in certain browser/transition combinations */
+
+.reveal ul {
+	list-style-type: none!important;
+}
+
+.reveal ul ul {
+	list-style-type: square;
+}
+
+.reveal ul ul ul {
+	list-style-type: circle;
+}
+
+/*********************************************
+ * SLIDES
+ *********************************************/
+
+.reveal .slides>section,
+.reveal .slides>section>section {
+	display: none;
+	position: absolute;
+	width: 100%;
+	padding: 20px 0px;
+
+	z-index: 10;
+	line-height: 2.2em!important;
+	font-weight: inherit;
