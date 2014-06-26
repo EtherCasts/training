@@ -11,6 +11,11 @@
 	list-style-type: none!important;
 }
 
+.reveal ul li {
+        margin:0 0 50px 0;  
+}
+
+
 .reveal ul ul {
 	list-style-type: square;
 }
