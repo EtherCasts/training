@@ -34,6 +34,11 @@ color: #B5C1F0!important;
 
 .progress span {
 background: #B5C1F0!important;
+}
+
+.reveal h1 {
+font-size: 3.17em!important;
+}
 /*********************************************
  * SLIDES
  *********************************************/
