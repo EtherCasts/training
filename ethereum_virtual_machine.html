@@ -59,7 +59,7 @@ title: Ethereum Training - Ethereum Virtual Machine
 
 <section>
 <h2>Denominations</h2>
-<table>
+<table class="reveal">
     <tr><td>1<td>Wei
     <tr><td>10^12<td>Szabo
     <tr><td>10^15<td>Finney
@@ -98,14 +98,15 @@ title: Ethereum Training - Ethereum Virtual Machine
 
 <section>
 <h2>Fee schedule</h2>
-TODO table
-1	Default amount of gas to pay for execution cycle.
-0	STOP or SUICIDE
-20	SHA3, SLOAD, BALANCE, CALL
-100	SSTORE (sometimes double or waived)
-1	Every additional word when expanding memory
-5	Every byte of data or code for a transaction
-500	Every transaction
+<table class="reveal">
+    <tr><td>1<td>Default amount of gas to pay for execution cycle.
+    <tr><td>0<td><code>STOP</code> or <code>SUICIDE</code>
+    <tr><td>20<td><code>SHA3</code>, <code>SLOAD</code>, <code>BALANCE</code>, <code>CALL</code>
+    <tr><td>100<td><code>SSTORE</code> (sometimes double or waived)
+    <tr><td>1<td>Every additional word when expanding memory
+    <tr><td>5<td>Every byte of data or code for a transaction
+    <tr><td>500<td>Every transaction
+</table>
 </section>
 
 <section data-background="black">
@@ -127,98 +128,107 @@ TODO table
 
 <section>
 <h2>Arithmetic Operations</h2>
-TODO table
-ADD	Addition operation
-MUL	Multiplication operation
-SUB	Subtraction operation
-DIV	Integer division operation
-SDIV	Signed integer division operation
-MOD	Modulo remainder operation
-SMOD	Signed modulo remainder operation
-EXP	Expontential operation
-NEG	Negation operation
+<table class="reveal">
+    <tr><td><code>ADD</code><td>Addition operation
+    <tr><td><code>MUL</code><td>Multiplication operation
+    <tr><td><code>SUB</code><td>Subtraction operation
+    <tr><td><code>DIV</code><td>Integer division operation
+    <tr><td><code>SDIV</code><td>Signed integer division operation
+    <tr><td><code>MOD</code><td>Modulo remainder operation
+    <tr><td><code>SMOD</code><td>Signed modulo remainder operation
+    <tr><td><code>EXP</code><td>Expontential operation
+    <tr><td><code>NEG</code><td>Negation operation
+</table>
 </section>
 
 <section>
 <h2>Relation Operations</h2>
-TODO table
-LT	Less-than comparison
-GT	Greater-than comparison
-EQ	Equality comparison
-NOT	Simple not operator
+<table class="reveal">
+    <tr><td><code>LT</code><td>Less-than comparison
+    <tr><td><code>GT</code><td>Greater-than comparison
+    <tr><td><code>EQ</code><td>Equality comparison
+    <tr><td><code>NOT</code><td>Simple not operator
+</table>
 </section>
 
 <section>
 <h2>Bitwise Logic Operations</h2>
-TODO table
-AND	Bitwise AND operation
-OR	Bitwise OR operation
-XOR	Bitwise XOR operation
-BYTE	Retrieve single byte from word
+<table class="reveal">
+    <tr><td><code>AND</code><td>Bitwise AND operation
+    <tr><td><code>OR</code><td>Bitwise OR operation
+    <tr><td><code>XOR</code><td>Bitwise XOR operation
+    <tr><td><code>BYTE</code><td>Retrieve single byte from word
+</table>
 </section>
 
 <section>
 <h2>Crypto Operations</h2>
-TODO table
-SHA3	Compute SHA3-256 hash
+<table class="reveal">
+    <tr><td><code>SHA3</code><td>Compute SHA3-256 hash
+</table>
 </section>
 
 <section>
 <h2>Environmental Information</h2>
-TODO table
-ADDRESS	Get address of currently executing account
-BALANCE	Get balance of currently executing account
-ORIGIN	Get execution origination address
-CALLER	Get caller address
-CALLVALUE	Get deposited value by the instruction/transaction responsible for this execution
-CALLDATALOAD	Get input data of current environment
-CALLDATASIZE	Get size of input data in current environment
-GASPRICE	Get price of gas in current environment
+<table class="reveal">
+    <tr><td><code>ADDRESS</code><td>Get address of currently executing account
+    <tr><td><code>BALANCE</code><td>Get balance of currently executing account
+    <tr><td><code>ORIGIN</code><td>Get execution origination address
+    <tr><td><code>CALLER</code><td>Get caller address
+    <tr><td><code>CALLVALUE</code><td>Get deposited value by the instruction/transaction responsible for this execution
+    <tr><td><code>CALLDATALOAD</code><td>Get input data of current environment
+    <tr><td><code>CALLDATASIZE</code><td>Get size of input data in current environment
+    <tr><td><code>GASPRICE</code><td>Get price of gas in current environment
+</table>
 </section>
 
 <section>
 <h2>Block Information</h2>
-TODO table
-PREVHASH	Get hash of most recent complete block
-COINBASE	Get the block’s coinbase address
-TIMESTAMP	Get the block’s timestamp
-NUMBER	Get the block’s number
-DIFFICULTY	Get the block’s difficulty
-GASLIMIT	Get the block’s gas limit
+<table class="reveal">
+    <tr><td><code>PREVHASH</code><td>Get hash of most recent complete block
+    <tr><td><code>COINBASE</code><td>Get the block’s coinbase address
+    <tr><td><code>TIMESTAMP</code><td>Get the block’s timestamp
+    <tr><td><code>NUMBER</code><td>Get the block’s number
+    <tr><td><code>DIFFICULTY</code><td>Get the block’s difficulty
+    <tr><td><code>GASLIMIT</code><td>Get the block’s gas limit
+</table>
 </section>
 
 <section>
 <h2>Stack, Memory and Storage Operations</h2>
-TODO table
-PUSH1..32	Place n-byte item on stack
-POP	Remote item from stack
-DUP	Duplicate stack item
-SWAP	Exchange stack items
-MLOAD	Load word from memory
-MSTORE	Save word to memory
-MSTORE8	Save byte to memory
-SLOAD	Load word from storage
-SSTORE	Save word to storage
+<table class="reveal">
+    <tr><td><code>PUSH1..32</code><td>Place n-byte item on stack
+    <tr><td><code>POP</code><td>Remote item from stack
+    <tr><td><code>DUP</code><td>Duplicate stack item
+    <tr><td><code>SWAP</code><td>Exchange stack items
+    <tr><td><code>MLOAD</code><td>Load word from memory
+    <tr><td><code>MSTORE</code><td>Save word to memory
+    <tr><td><code>MSTORE8</code><td>Save byte to memory
+    <tr><td><code>SLOAD</code><td>Load word from storage
+    <tr><td><code>SSTORE</code><td>Save word to storage
+</table>
 </section>
 
 <section>
 <h2>Flow Operations</h2>
-TODO table
-STOP	Halts execution
-JUMP	Alter the program counter
-JUMPI	Conditionally alter the program counter
-PC	Get the program counter
-MSIZE	Get the size of the active memory
-GAS	Get the amount of available gas
+<table class="reveal">
+    <tr><td><code>STOP</code><td>Halts execution
+    <tr><td><code>JUMP</code><td>Alter the program counter
+    <tr><td><code>JUMPI</code><td>Conditionally alter the program counter
+    <tr><td><code>PC</code><td>Get the program counter
+    <tr><td><code>MSIZE</code><td>Get the size of the active memory
+    <tr><td><code>GAS</code><td>Get the amount of available gas
+</table>
 </section>
 
 <section>
 <h2>System Operations</h2>
-TODO table
-CREATE	Create a new contract
-CALL	Message-call into contract
-RETURN	Halt execution returning output data
-SUICIDE	Halt execution and obliterate account
+<table class="reveal">
+    <tr><td><code>CREATE</code><td>Create a new contract
+    <tr><td><code>CALL</code><td>Message-call into contract
+    <tr><td><code>RETURN</code><td>Halt execution returning output data
+    <tr><td><code>SUICIDE</code><td>Halt execution and obliterate account
+</table>
 </section>
 
 <section>
