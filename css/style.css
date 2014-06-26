@@ -9,6 +9,11 @@
 
 .reveal ul {
 	list-style-type: none!important;
+
+}
+
+.reveal ul li {
+ margin:0 0 50px 0;  
 }
 
 .reveal ul li {
@@ -36,5 +41,5 @@
 	padding: 20px 0px;
 
 	z-index: 10;
-	line-height: 2.2em!important;
+	line-height: 1.2em!important;
 	font-weight: inherit;
