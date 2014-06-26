@@ -1,0 +1,248 @@
+---
+layout: presentation
+title: Ethereum Training - Serpent
+---
+
+<section>
+    <h1>Ethereum Training</h1>
+    <h3>Serpent</h3>
+    <p>
+    <small>Ethereum POC5 (well, almost...)</small>
+    </p>
+    <p>
+    <img width="128" height="128" src="images/ethereum-icon.png">
+    <a href="http://ethercasts.com">ethercasts</a>
+    </p>
+</section>
+
+<section>
+<ul>
+    <li>Serpent syntax pretty much like Python
+    <li>Stand-alone compiler serpent
+    <li>Compiler build into AlethZero, Ethereal, EthereumJ
+    <li>Web based testing tool - <a href="http://www.mintchalk.com/">mintchalk.com</a>
+</ul>
+</section>
+
+<section>
+<h2>wiki.ethereum.org</h2>
+<a href="https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-Serpent-programming-language-operations"><img src="images/serpent_wiki.png" alt="Serpent Wiki"></a>
+</section>
+
+<section>
+<h2>Example: subcurrency.se</h2>
+<pre><code data-trim>
+init:
+    contract.storage[msg.sender] = 1000000
+code:
+    if msg.datasize == 1:
+        addr = msg.data[0]
+        return(contract.storage[addr])
+    else:
+        from = msg.sender
+        fromvalue = contract.storage[from]
+        to = msg.data[0]
+        value = msg.data[1]
+        if fromvalue &gt;= value:
+            contract.storage[from] = fromvalue - value
+            contract.storage[to] = contract.storage[to] + value
+            return(1)
+        else:
+            return(0)
+</code></pre>
+</section>
+
+<section data-background="black">
+<h2>Syntax</h2>
+</section>
+
+<section>
+<h2>Program Structure</h2>
+<pre><code data-trim>
+init:
+    executed upon contract creation 
+shared:
+    constants etc
+code:
+    contract body as stored in the block chain
+</code></pre>
+</section>
+
+<section>
+<h2>Comments</h2>
+<pre><code data-trim>
+x = 4 // this is a comment and does
+      // not appear in the compiled code
+      # can also comment with a hash like this
+      /* this style is not supported however */ 
+</code></pre>
+</section>
+
+<section>
+<h2>Arithmetic (1/2)</h2>
+<ul>
+    <li>Normal arithmetic works as expected: <code>x = 20 + 7 * 5 </code> sets <code>x</code> to <code>55</code>
+
+    <li>Negative numbers do not exist: <code>x = 0 - 1</code> sets <code>x</code> to <code>11579208923731619542357098500868790785326998466564 0564039457584007913129639935</code> (which is <code>2^256 - 1</code>)
+
+    <li>Decimals do not exist: <code>x = 7 / 4</code> sets <code>x</code> to <code>1</code>
+</ul>
+</section>
+
+<section>
+<h2>Arithmetic (2/2)</h2>
+<ul>
+    <li>You can use <code>#/</code> and <code>#%</code> to pretend the numbers are signed integers: <code>x = (0-9) #/ 3 + 5</code> sets <code>x</code> to <code>2</code>,  whereas <code>y = (0-9) / 3 + 5</code> sets <code>y</code> to <code>38597363079105398474523661669562635951089994 888546854679819194669304376546647</code> 
+
+    <li>Arithmetic wraps around 2^256: <code>x = 3 ^ (2 ^ 254)</code> sets <code>x</code> to <code>1</code>
+
+    <li>Use <code>x = y | z</code>, <code>x = y &amp; z</code> and <code>x = y xor z</code> for bitwise operations
+</ul>
+</section>
+
+<section>
+<h2>Variables / Arrays</h2>
+<ul>
+    <li>Variables work just like any other language: <code>x = 25</code> then <code>y = x + 5</code> sets <code>y</code> to <code>30</code> 
+    <li>Use <code>x = array(n)</code> to initialize an array of <code>n</code> 32-byte values 
+    <li>Use <code>x[i] = v</code> to set values in arrays and <code>v = x[i]</code> to get values in arrays 
+    <li>Use array literals to declare arrays inline: <code>x = [1,2,3]</code>
+</ul>
+</section>
+
+<section>
+<h2>Byte arrays</h2>
+<ul>
+    <li>Use <code>x = bytes(n)</code> to initialize a string/bytearray of <code>n</code> bytes 
+    <li>Use <code>setch(x,i,v)</code> to set the byte at position <code>i</code> of byte array <code>x</code> to value <code>v</code> 
+    <li>Use <code>v = getch(x,i)</code> to get the byte at position <code>i</code> of byte array <code>x</code>
+
+    <li>Variables are stored in the EVM memory, you pay a fee for expanding its size.
+</ul>
+</section>
+
+<section>
+<h2>Conditions and loops</h2>
+<ul>
+    <li><code>if</code>, <code>elif</code>, <code>else</code> and <code>while</code> like Python
+</ul>
+<pre><code data-trim>
+if x &gt; 5:
+    y = 7
+</code></pre>
+<pre><code data-trim>
+x = 248
+while x &gt; 1:
+    if (x % 2) == 0:
+        x = x / 2
+    else:
+        x = 3 * x + 1
+</code></pre>
+</section>
+
+<section data-background="black">
+<h2>Pseudovariables</h2>
+</section>
+
+<section>
+<h2>Pseudovariables block</h2>
+<ul>
+    <li><code>block.prevhash</code> - previous block hash
+    <li><code>block.number</code> - block number
+    <li><code>block.timestamp</code> - block timestamp
+    <li><code>block.difficulty</code> - block difficulty
+    <li><code>block.coinbase</code> - address of block miner
+    <li><code>block.gaslimit</code> - maximum amount of gas that can be spent in the block
+</ul>
+</section>
+
+<section>
+<h2>Pseudovariables tx</h2>
+<ul>
+    <li><code>tx.gasprice</code> - amount paid by transaction for gas
+    <li><code>tx.origin</code> - original sender of transaction (NOT the sender of the current message, which is different in a nested call situation)
+    <li><code>tx.gas</code> - current amount of gas remaining
+</ul>
+</section>
+
+<section>
+<h2>Pseudovariables msg</h2>
+<ul>
+    <li><code>msg.sender</code> - sender of the message
+    <li><code>msg.value</code> - value of the message
+    <li><code>msg.datasize</code> - length of the data provided by the message, measured as the number of complete 32-byte chunks
+    <li><code>msg.data[i]</code> - the <code>i</code>-th 32-byte chunk in message data
+</ul>
+</section>
+
+<section>
+<h2>Pseudovariables contract</h2>
+<ul>
+    <li><code>contract.address</code> - address of the contract
+    <li><code>contract.balance</code> - balance of the contract
+    <li><code>contract.storage[i]</code> - the contract's long term storage, at index <code>i</code>
+</ul>
+</section>
+
+<section data-background="black">
+<h2>Functions</h2>
+</section>
+
+<section>
+<h2>Transactions</h2>
+<ul>
+    <li><code>send(to, value)</code> - sends <code>value</code> ether to <code>to</code>
+    <li><code>send(gas, to, value)</code> - same, allowing the computation the given amount of <code>gas</code>.
+    <li><code>x = msg(gas, to, value, datastart, datalen)</code> - sends a message to <code>to</code>, using the data at memory indices <code>datastart...datastart+datalen*32-1</code>, with the given amount of ether and <code>gas</code>, and sets <code>x</code> to the first 32 bytes of the result.
+    <li><code>x = msg(gas, to, value, datastart, datalen, outputlen)</code> - sends a message to <code>to</code>, using the data at memory indices <code>datastart...datastart+datalen*32-1</code>, with the given amount of ether and <code>gas</code>, and pastes outputlen times 32 bytes to the variable <code>x</code>
+</ul>
+</section>
+
+<section>
+<h2>Contract creation</h2>
+<ul>
+    <li><code>x = create(f)</code> - creates a new contract using code from file <code>f</code> , and return the address of the contract
+    <li><code>x = create(endowment, f)</code> - same with endowment
+</ul>
+</section>
+
+<section>
+<h2>Halting</h2>
+<ul>
+    <li><code>stop</code> - this keyword by itself on one line stops execution
+    <li><code>return(x)</code> - returns the 32 bytes of value <code>x</code>
+    <li><code>return(memstart, len)</code> - returns the memory at indices <code>memstart ... memstart+32*len-1</code>
+    <li><code>suicide(a)</code> - destroys the contract, sending all remaining balance to <code>a</code>
+</ul>
+</section>
+
+<section>
+<h2>Miscellaneous</h2>
+<ul>
+    <li><code>x = sha3(v)</code> - returns the SHA3 of the given 32-byte value
+    <li><code>x = byte(y,z)</code> - sets <code>x</code> to the <code>z</code>-th byte of <code>y</code>
+    <li><code>inset(f)</code> - inline the content of another Serpent file
+</ul>
+</section>
+
+<section data-background="black">
+<h2>Simulators</h2>
+</section>
+
+<section>
+<h2>mintchalk.com</h2>
+<a href="http://www.mintchalk.com"><img src="images/mintchalk.png" alt="mintchalk"></a>
+</section>
+
+<section>
+<h2>evm-sim</h2>
+<a href="https://github.com/EtherCasts/evm-sim"><img src="images/evm-sim.png" alt="evm-sim"></a>
+</section>
+
+<section>
+    <h1>What's next?</h1>
+    <h3>⇒ Try Serpent</h3>
+    <p>
+        Questions / Feedback: <a href="mailto:jorisbontje@gmail.com">jorisbontje@gmail.com</a>
+    </p>
+</section>
