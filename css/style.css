@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*!
- * EtherCasts Stylesheet
+ * EtherCastsTraining Stylesheet
  */
 
 
@@ -9,21 +9,36 @@
 
 .reveal ul {
 	list-style-type: none!important;
+
+}
+
+.reveal h2 {
+	margin: 0 0 70px 0!important;
 }
 
 .reveal ul li {
-        margin:0 0 2% 0;  
+ margin:0 0 60px 0;  
 }
 
-
-.reveal ul ul {
-	list-style-type: square;
+.controls div.navigate-left.enabled {
+border-right-color: #B5C1F0!important;
 }
 
-.reveal ul ul ul {
-	list-style-type: circle;
+.controls div.navigate-right.enabled {
+border-left-color: #B5C1F0!important;
 }
 
+.reveal a:not(.image) {
+color: #B5C1F0!important;
+}
+
+.progress span {
+background: #B5C1F0!important;
+}
+
+.reveal h1 {
+font-size: 3.17em!important;
+}
 /*********************************************
  * SLIDES
  *********************************************/
@@ -36,5 +51,5 @@
 	padding: 20px 0px;
 
 	z-index: 10;
-	line-height: 2.2em!important;
+	line-height: 1.2em!important;
 	font-weight: inherit;
