@@ -42,11 +42,11 @@ font-size: 3.17em!important;
 }
 @font-face {
     font-family: 'PrintClearly';
-    src: url('fonts/princ.ttf');
+    src: url('../fonts/princ.ttf');
 }
 @font-face {
     font-family: 'Roboto-Regular';
-    src: url('fonts/roboto-regular.ttf');
+    src: url('../fonts/roboto-regular.ttf');
 }
 
 /*********************************************
