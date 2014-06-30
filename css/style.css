@@ -39,6 +39,11 @@ background: #B5C1F0!important;
 .reveal h1 {
 font-size: 3.17em!important;
 }
+@font-face {
+    font-family: 'PrintClearly';
+    src: url('fonts/princ.ttf');
+}
+
 /*********************************************
  * SLIDES
  *********************************************/
@@ -53,3 +58,8 @@ font-size: 3.17em!important;
 	z-index: 10;
 	line-height: 1.2em!important;
 	font-weight: inherit;
+}
+
+.reveal h1, h2 {
+	font-family: "PrintClearly"!important; 
+}
