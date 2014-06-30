@@ -30,6 +30,7 @@ border-left-color: #B5C1F0!important;
 
 .reveal a:not(.image) {
 color: #B5C1F0!important;
+font-family: "Roboto-Regular"!important;
 }
 
 .progress span {
@@ -42,6 +43,10 @@ font-size: 3.17em!important;
 @font-face {
     font-family: 'PrintClearly';
     src: url('fonts/princ.ttf');
+}
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/roboto-regular.ttf');
 }
 
 /*********************************************
@@ -62,4 +67,12 @@ font-size: 3.17em!important;
 
 .reveal h1, h2 {
 	font-family: "PrintClearly"!important; 
+}
+
+.reveal h3, h4, h5, h6 {
+   font-family: "Roboto-Regular"!important;
+}
+
+.reveal small {
+	font-family: "Roboto-Regular"!important;
 }
