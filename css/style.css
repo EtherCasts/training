@@ -52,6 +52,7 @@ font-size: 3.17em!important;
 /*Special class for white text*/
 .wt {
 	color: white!important;
+	padding-top: 25%!important;
 }
 /*********************************************
  * SLIDES
