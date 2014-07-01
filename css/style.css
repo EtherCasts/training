@@ -49,6 +49,10 @@ font-size: 3.17em!important;
     src: url('../fonts/roboto-regular.ttf');
 }
 
+/*Special class for white text*/
+.wt {
+	color: white!important;
+}
 /*********************************************
  * SLIDES
  *********************************************/
